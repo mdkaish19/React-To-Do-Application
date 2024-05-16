@@ -105,14 +105,14 @@ li {
 }
 
 li::before {
-  content: counter(item) ".";
+  content: counter(item);
   font-weight: bold;
   margin-right: 0px;
   display: inline-block;
   width: 20px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 720px) {
   li::before {
     display: block;
     width: auto; 
