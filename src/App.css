@@ -105,7 +105,7 @@ li {
 }
 
 li::before {
-  content: counter(item) ".";
+  /* content: counter(item) "."; */
   font-weight: bold;
   margin-right: 0px;
   display: inline-block;
