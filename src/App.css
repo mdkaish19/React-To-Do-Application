@@ -51,10 +51,6 @@ ul {
   padding: 0;
 }
 
-li {
-  margin-bottom: 10px;
-}
-
 button {
   padding: 4px 8px;
   background-color: #dc3545;
@@ -66,4 +62,60 @@ button {
 
 button:hover {
   background-color: #c82333;
+}
+
+/* TaskList Component Styles */
+
+/* Update button */
+button.update-btn {
+  padding: 4px 8px;
+  background-color: #28a745; /* Green color */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.update-btn:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Save button */
+button.save-btn {
+  padding: 4px 8px;
+  background-color: #28a745; /* Green color */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.save-btn:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Numbered list */
+ul.numbered-list {
+  counter-reset: item;
+}
+
+li {
+  margin-bottom: 12px;
+  counter-increment: item;
+}
+
+li::before {
+  content: counter(item) ".";
+  font-weight: bold;
+  margin-right: 0px;
+  display: inline-block;
+  width: 20px;
+}
+
+@media screen and (max-width: 500px) {
+  li::before {
+    display: block; /* Change to block display for smaller screens */
+    width: auto; /* Reset width for smaller screens */
+    margin-bottom: 5px; /* Add margin for spacing */
+  }
 }

@@ -10,11 +10,12 @@ function App() {
   return (
     <Provider store={store}>
       <div className="container">
-        <h1>React To-Do Application</h1>
+        <h1>My To-Do Application</h1>
         <TaskInput />
         <TaskList />
       </div>
     </Provider>
+    
   );
 }
 
