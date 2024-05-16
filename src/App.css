@@ -105,14 +105,14 @@ li {
 }
 
 li::before {
-  content: counter(item);
+  content: counter(item) ".";
   font-weight: bold;
   margin-right: 0px;
   display: inline-block;
   width: 20px;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 500px) {
   li::before {
     display: block;
     width: auto; 
@@ -120,8 +120,21 @@ li::before {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   .container {
     padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  input[type="text"],
+  button[type="submit"],
+  button,
+  button.update-btn,
+  button.save-btn {
+    padding: 5px 15px;
+    font-size: 14px;
   }
 }
