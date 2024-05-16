@@ -7,9 +7,9 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align items to the top */
+  align-items: flex-start;
   min-height: 100vh;
-  margin-top: 20px; /* Top margin of 20px */
+  margin-top: 20px; 
 }
 
 .container {
@@ -69,7 +69,7 @@ button:hover {
 /* Update button */
 button.update-btn {
   padding: 4px 8px;
-  background-color: #28a745; /* Green color */
+  background-color: #28a745; 
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -77,13 +77,13 @@ button.update-btn {
 }
 
 button.update-btn:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #218838; 
 }
 
 /* Save button */
 button.save-btn {
   padding: 4px 8px;
-  background-color: #28a745; /* Green color */
+  background-color: #28a745; 
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -91,7 +91,7 @@ button.save-btn {
 }
 
 button.save-btn:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #218838; 
 }
 
 /* Numbered list */
@@ -114,8 +114,8 @@ li::before {
 
 @media screen and (max-width: 500px) {
   li::before {
-    display: block; /* Change to block display for smaller screens */
-    width: auto; /* Reset width for smaller screens */
-    margin-bottom: 5px; /* Add margin for spacing */
+    display: block;
+    width: auto; 
+    margin-bottom: 5px; 
   }
 }
