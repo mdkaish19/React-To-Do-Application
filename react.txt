@@ -1,3 +1,6 @@
+TaskList.js
+
+
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteTask, updateTask } from '../components/TaskAction'; // Assuming you have an updateTask action
@@ -14,17 +17,12 @@ const TaskList = () => {
   };
 
   const handleUpdate = (task) => {
-    if (updatedText.trim() !== '') {
-      dispatch(updateTask(task.id, updatedText));
-      setUpdatedText(''); // Clear the input after update
-      setIsEditing(null); // Disable editing after update
-    }
-  };
-
-  const handleEditClick = (task) => {
-    setUpdatedText(task.text); // Set the updatedText state with the current task's text
-    setIsEditing(task.id); // Enable editing for this task
-  };
+  if (updatedText.trim() !== '') {
+    dispatch(updateTask(task.id, updatedText));
+    setUpdatedText(''); // Clear the input after update
+    setIsEditing(null); // Disable editing after update
+  }
+};
 
   const handleKeyPress = (event, task) => {
     if (event.key === 'Enter') {
@@ -43,6 +41,7 @@ const TaskList = () => {
       <ul>
         {tasks.map((task) => (
           <li key={task.id}>
+            {/* Use CSS for bullet points */}
             {isEditing === task.id ? (
               <>
                 <input
@@ -50,7 +49,7 @@ const TaskList = () => {
                   type="text"
                   value={updatedText}
                   onChange={(e) => setUpdatedText(e.target.value)}
-                  onKeyDown={(e) => handleKeyPress(e, task)}
+                  onKeyDown={(e) => handleKeyPress(e, task)} // Call handleKeyPress on key press
                   placeholder="Enter updated task"
                 />
                 <button className="save-btn" onClick={() => handleUpdate(task)}>Save</button>
@@ -58,7 +57,7 @@ const TaskList = () => {
             ) : (
               <>
                 <span style={{ marginRight: '8px' }}>{task.text}</span>
-                <button className="update-btn" onClick={() => handleEditClick(task)}>Update</button>
+                <button className="update-btn" onClick={() => setIsEditing(task.id)}>Update</button>
                 <span style={{ marginRight: '8px' }}>{}</span>
                 <button onClick={() => handleDelete(task.id)}>Delete</button>
               </>
