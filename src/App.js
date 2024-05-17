@@ -199,15 +199,16 @@ const ShareButton = () => {
 
   const generateShareLink = () => {
     const baseUrl = window.location.href.split('?')[0];
-    return `${baseUrl}tasks.pdf`;
+    return `${baseUrl}?tasks=${encodeURIComponent(JSON.stringify(tasks.map(task => task.text)))}`;
   };
 
   const handleShareLink = () => {
     if (tasks.length === 0) {
-      alert('Please add tasks to the list before sharing.'); // Show alert if no tasks
+      alert('Please add tasks to the list before sharing...'); // Show alert if no tasks
     } else {
       const shareLink = generateShareLink();
-      window.open(shareLink, '_blank');
+      const whatsappLink = `https://wa.me/?text=${encodeURIComponent(shareLink)}`;
+      window.open(whatsappLink, '_blank');
     }
   };
 
