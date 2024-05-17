@@ -8,11 +8,17 @@ const TaskList = () => {
   const [updatedText, setUpdatedText] = useState('');
   const [isEditing, setIsEditing] = useState(null); // State to track if editing is enabled for a task
   const inputRef = useRef(null); // Ref for the input element
+  const [checkedTasks, setCheckedTasks] = useState(() => {
+    // Initialize checked tasks from localStorage or empty array
+    const storedCheckedTasks = localStorage.getItem('checkedTasks');
+    return storedCheckedTasks ? JSON.parse(storedCheckedTasks) : [];
+  });
 
   const handleDelete = (id) => {
     const confirmDelete = window.confirm('Are you sure you want to delete this task...?');
     if (confirmDelete) {
       dispatch(deleteTask(id));
+      setCheckedTasks(checkedTasks.filter(taskId => taskId !== id)); // Remove deleted task from checkedTasks
     }
   };
 
@@ -41,11 +47,32 @@ const TaskList = () => {
     }
   }, [isEditing]);
 
+  const handleCheckboxChange = (taskId) => {
+    if (checkedTasks.includes(taskId)) {
+      setCheckedTasks(checkedTasks.filter(id => id !== taskId)); // Remove task from checkedTasks if unchecked
+    } else {
+      setCheckedTasks([...checkedTasks, taskId]); // Add task to checkedTasks if checked
+    }
+  };
+
+  useEffect(() => {
+    localStorage.setItem('checkedTasks', JSON.stringify(checkedTasks)); // Update localStorage when checkedTasks change
+  }, [checkedTasks]);
+
   return (
     <div className="container">
       <ul>
         {tasks.map((task, index) => ( // Added 'index' for numbering
           <li key={task.id}>
+            <label className="checkbox-label">
+              <input
+                type="checkbox"
+                checked={checkedTasks.includes(task.id)}
+                onChange={() => handleCheckboxChange(task.id)}
+              />
+              <span className="checkbox-custom"></span>
+              <span></span>
+            </label>
             <span className="item-number">{index + 1}.</span> {/* Item number with spacing */}
             {isEditing === task.id ? (
               <>
