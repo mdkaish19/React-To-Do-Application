@@ -70,6 +70,8 @@ li {
 .item-text {
   flex: 1; /* Fill remaining space */
   margin-right: 10px; /* Add space between item text and buttons */
+  max-width: 200px; /* Limit the maximum width */
+  word-wrap: break-word; /* Ensure text wraps onto the next line */
 }
 
 button {

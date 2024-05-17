@@ -12,6 +12,8 @@ const TaskInput = () => {
     if (task.trim() !== '') {
       dispatch(addTask(task));
       setTask('');
+    } else {
+      alert('Please enter a valid task.'); // Show alert for empty input
     }
   };
 
@@ -19,6 +21,7 @@ const TaskInput = () => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
+        className="task-input" // Added class for styling
         placeholder="Add a new task"
         value={task}
         onChange={(e) => setTask(e.target.value)}
