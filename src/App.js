@@ -63,8 +63,10 @@ const ShareButton = () => {
   const tasks = useSelector((state) => state.tasks);
 
   const generateShareLink = () => {
-    const taskTexts = tasks.map(task => task.text).join('\n');
-    const encodedText = encodeURIComponent(`Here are my tasks:\n${taskTexts}`);
+    // const taskTexts = tasks.map(task => task.text).join('\n');
+    // const encodedText = encodeURIComponent(`Here are my tasks:\n${taskTexts}`);
+    const taskList = tasks.map((task, index) => `${index + 1}. ${task.text}`).join('\n');
+    const encodedText = encodeURIComponent(`Here are my tasks List:\n${taskList}`);
     return `https://wa.me/?text=${encodedText}`;
   };
 
