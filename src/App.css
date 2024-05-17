@@ -185,3 +185,44 @@ footer {
   color: #0071b3;
   font-size: .75rem; /* Equivalent to h5 font size */
 }
+.checkbox-label {
+  position: relative;
+  margin-right: 10px;
+}
+
+.checkbox-custom {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 30%;
+  background-color: #ffffff;
+  border: 2px solid #007bff;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox-custom::after {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #007bff; /* Color when checkbox is checked */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+input[type="checkbox"]:checked + .checkbox-custom::after {
+  opacity: 1;
+}
