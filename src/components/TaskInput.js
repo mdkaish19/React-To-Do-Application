@@ -13,7 +13,7 @@ const TaskInput = () => {
       dispatch(addTask(task));
       setTask('');
     } else {
-      alert('Please enter a valid task.'); // Show alert for empty input
+      alert('Please enter a valid task...'); // Show alert for empty input
     }
   };
 

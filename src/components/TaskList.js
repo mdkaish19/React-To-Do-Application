@@ -10,7 +10,7 @@ const TaskList = () => {
   const inputRef = useRef(null); // Ref for the input element
 
   const handleDelete = (id) => {
-    const confirmDelete = window.confirm('Are you sure you want to delete this task?');
+    const confirmDelete = window.confirm('Are you sure you want to delete this task...?');
     if (confirmDelete) {
       dispatch(deleteTask(id));
     }
