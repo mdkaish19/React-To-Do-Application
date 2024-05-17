@@ -11,13 +11,8 @@ body {
   min-height: 100vh;
   margin-top: 50px; 
 }
-
-.container {
-  max-width: 800px;
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+h1 {
+  text-align: center;
 }
 
 /* TaskInput Component Styles */
@@ -54,7 +49,6 @@ button[type="submit"]:hover {
   background-color: #f8f9fa;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
 }
 
 ul {
@@ -148,7 +142,6 @@ li::before {
 
   h1 {
     font-size: 24px;
-    text-align: center;
   }
 
   input[type="text"],
@@ -165,5 +158,5 @@ footer {
   padding: 15px 15px;
   text-align: center;
   color: #0071b3;
-  font-size: 0.75rem; /* Equivalent to h5 font size */
+  font-size: .75rem; /* Equivalent to h5 font size */
 }
