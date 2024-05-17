@@ -203,18 +203,26 @@ const ShareButton = () => {
   };
 
   const handleShareLink = () => {
-    const shareLink = generateShareLink();
-    window.open(shareLink, '_blank');
+    if (tasks.length === 0) {
+      alert('Please add tasks to the list before sharing.'); // Show alert if no tasks
+    } else {
+      const shareLink = generateShareLink();
+      window.open(shareLink, '_blank');
+    }
   };
 
   const generatePDF = () => {
-    const doc = new jsPDF();
-    doc.setFontSize(12);
-    doc.text("My To-Do Tasks", 10, 10);
-    tasks.forEach((task, index) => {
-      doc.text(`${index + 1}. ${task.text}`, 10, 20 + (index * 10));
-    });
-    doc.save("tasks.pdf");
+    if (tasks.length === 0) {
+      alert('Please add tasks to the list before downloading...'); // Show alert if no tasks
+    } else {
+      const doc = new jsPDF();
+      doc.setFontSize(12);
+      doc.text("My To-Do Tasks", 10, 10);
+      tasks.forEach((task, index) => {
+        doc.text(`${index + 1}. ${task.text}`, 10, 20 + (index * 10));
+      });
+      doc.save("tasks.pdf");
+    }
   };
 
   useEffect(() => {
@@ -249,4 +257,3 @@ const App = () => {
 }
 
 export default App;
-
