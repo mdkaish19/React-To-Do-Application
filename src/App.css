@@ -11,6 +11,7 @@ body {
   min-height: 100vh;
   margin-top: 50px; 
 }
+
 h1 {
   text-align: center;
 }
@@ -103,7 +104,6 @@ button.update-btn:hover {
 }
 
 /* Save button */
-
 button.save-btn {
   padding: 4px 8px;
   background-color: #28a745; 
@@ -117,16 +117,39 @@ button.save-btn:hover {
   background-color: #218838; 
 }
 
-/* Numbered list */
-ul.numbered-list {
-  counter-reset: item;
+/* Share button */
+button.share-btn {
+  padding: 8px 16px;
+  background-color: #25D366; 
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px; /* Add space between buttons */
 }
 
-li::before {
-  font-weight: bold;
-  margin-right: 0px;
-  display: inline-block;
-  width: 20px;
+button.share-btn:hover {
+  background-color: #1DA951; 
+}
+
+/* Download button */
+button.download-btn {
+  padding: 8px 16px;
+  background-color: #007bff; 
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.download-btn:hover {
+  background-color: #0056b3; 
+}
+
+.share-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 @media screen and (max-width: 500px) {
