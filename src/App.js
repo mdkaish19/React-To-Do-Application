@@ -1,4 +1,3 @@
-
 import React from 'react';
 import TaskInput from './components/TaskInput';
 import TaskList from './components/TaskList';
@@ -13,9 +12,9 @@ function App() {
         <h1>My To-Do Application</h1>
         <TaskInput />
         <TaskList />
+        <footer>&copy; 2024 Md Kaish. All rights reserved.</footer>
       </div>
     </Provider>
-    
   );
 }
 

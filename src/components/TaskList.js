@@ -10,7 +10,10 @@ const TaskList = () => {
   const inputRef = useRef(null); // Ref for the input element
 
   const handleDelete = (id) => {
-    dispatch(deleteTask(id));
+    const confirmDelete = window.confirm('Are you sure you want to delete this item?');
+    if (confirmDelete) {
+      dispatch(deleteTask(id));
+    }
   };
 
   const handleUpdate = (task) => {
@@ -41,8 +44,9 @@ const TaskList = () => {
   return (
     <div className="container">
       <ul>
-        {tasks.map((task) => (
+        {tasks.map((task, index) => ( // Added 'index' for numbering
           <li key={task.id}>
+            <span className="item-number">{index + 1}.</span> {/* Item number with spacing */}
             {isEditing === task.id ? (
               <>
                 <input
@@ -57,10 +61,9 @@ const TaskList = () => {
               </>
             ) : (
               <>
-                <span style={{ marginRight: '8px' }}>{task.text}</span>
+                <span className="item-text">{task.text}</span> {/* Item text with spacing */}
                 <button className="update-btn" onClick={() => handleEditClick(task)}>Update</button>
-                <span style={{ marginRight: '8px' }}>{}</span>
-                <button onClick={() => handleDelete(task.id)}>Delete</button>
+                <button className="delete-btn" onClick={() => handleDelete(task.id)}>Delete</button>
               </>
             )}
           </li>
