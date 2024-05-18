@@ -17,8 +17,11 @@ const ShareButton = () => {
   const completedTasks = tasks.filter(task => checkedTasks.includes(task.id));
 
   const generateShareLink = () => {
-    const taskList = tasks.map((task, index) => `${index + 1}. ${task.text}`).join('\n');
-    const encodedText = encodeURIComponent(`Here are my tasks List:\n${taskList}`);
+    const activeTaskList = activeTasks.map((task, index) => `${index + 1}. ${task.text}`).join('\n');
+    const completedTaskList = completedTasks.map((task, index) => `${index + 1}. ${task.text}`).join('\n');
+    const encodedText = encodeURIComponent(
+      `Here are my tasks List:\n\nActive Tasks:\n${activeTaskList}\n\nCompleted Tasks:\n${completedTaskList}`
+    );
     return `https://wa.me/?text=${encodedText}`;
   };
 
