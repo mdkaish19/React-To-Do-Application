@@ -27,7 +27,7 @@ input[type="text"] {
   padding: 8px;
   margin-right: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 button[type="submit"] {
@@ -35,7 +35,7 @@ button[type="submit"] {
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
@@ -103,20 +103,6 @@ button.update-btn:hover {
   background-color: #218838; 
 }
 
-/* Save button */
-button.save-btn {
-  padding: 4px 8px;
-  background-color: #28a745; 
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button.save-btn:hover {
-  background-color: #218838; 
-}
-
 /* Share button */
 button.share-btn {
   padding: 8px 16px;
@@ -144,6 +130,14 @@ button.download-btn {
 
 button.download-btn:hover {
   background-color: #0056b3; 
+}
+
+button.clear-btn {
+  background-color: #dc3545;
+}
+
+button.clear-btn:hover {
+  background-color: #c82333;
 }
 
 .share-container {

@@ -31,9 +31,16 @@ const taskReducer = (state = initialState, action) => {
         ...state,
         tasks: updatedTasksList,
       };
+    case 'CLEAR_TASKS':
+      localStorage.removeItem('tasks');
+      return {
+        ...state,
+        tasks: [],
+      };
     default:
       return state;
   }
 };
 
 export default taskReducer;
+

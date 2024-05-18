@@ -18,3 +18,7 @@ export const updateTask = (id, updatedText) => ({
     updatedText,
   },
 });
+
+export const clearTasks = () => ({
+  type: 'CLEAR_TASKS',
+});
