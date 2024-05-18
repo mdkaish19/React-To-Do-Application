@@ -1,3 +1,4 @@
+// TaskList.js
 import React, { useState, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteTask, updateTask } from '../components/TaskAction'; // Assuming you have an updateTask action
@@ -59,43 +60,68 @@ const TaskList = () => {
     localStorage.setItem('checkedTasks', JSON.stringify(checkedTasks)); // Update localStorage when checkedTasks change
   }, [checkedTasks]);
 
+  const activeTasks = tasks.filter(task => !checkedTasks.includes(task.id));
+  const completedTasks = tasks.filter(task => checkedTasks.includes(task.id));
+
   return (
-    <div className="container">
-      <ul>
-        {tasks.map((task, index) => ( // Added 'index' for numbering
-          <li key={task.id}>
-            <label className="checkbox-label">
-              <input
-                type="checkbox"
-                checked={checkedTasks.includes(task.id)}
-                onChange={() => handleCheckboxChange(task.id)}
-              />
-              <span className="checkbox-custom"></span>
-              <span className="item-text"></span>
-            </label>
-            <span className="item-number">{index + 1}.</span> {/* Item number with spacing */}
-            {isEditing === task.id ? (
-              <>
+    <div className="task-list-container">
+      <div className="active-tasks">
+        <h2>Tasks List</h2>
+        <ul>
+          {activeTasks.map((task, index) => ( // Added 'index' for numbering
+            <li key={task.id}>
+              <label className="checkbox-label">
                 <input
-                  ref={inputRef}
-                  type="text"
-                  value={updatedText}
-                  onChange={(e) => setUpdatedText(e.target.value)}
-                  onKeyDown={(e) => handleKeyPress(e, task)}
-                  placeholder="Enter updated task"
+                  type="checkbox"
+                  checked={checkedTasks.includes(task.id)}
+                  onChange={() => handleCheckboxChange(task.id)}
                 />
-                <button className="save-btn" onClick={() => handleUpdate(task)}>Save</button>
-              </>
-            ) : (
-              <>
-                <span className="item-text">{task.text}</span> {/* Item text with spacing */}
-                <button className="update-btn" onClick={() => handleEditClick(task)}>Update</button>
-                <button className="delete-btn" onClick={() => handleDelete(task.id)}>Delete</button>
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
+                <span className="checkbox-custom"></span>
+              </label>
+              <span className="item-number">{index + 1}.</span> {/* Item number with spacing */}
+              {isEditing === task.id ? (
+                <>
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={updatedText}
+                    onChange={(e) => setUpdatedText(e.target.value)}
+                    onKeyDown={(e) => handleKeyPress(e, task)}
+                    placeholder="Enter updated task"
+                  />
+                  <button className="save-btn" onClick={() => handleUpdate(task)}>Save</button>
+                </>
+              ) : (
+                <>
+                  <span className="item-text">{task.text}</span> {/* Item text with spacing */}
+                  <button className="update-btn" onClick={() => handleEditClick(task)}>Update</button>
+                  <button className="delete-btn" onClick={() => handleDelete(task.id)}>Delete</button>
+                </>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="completed-tasks">
+        <h2>Completed Tasks</h2>
+        <ul>
+          {completedTasks.map((task, index) => (
+            <li key={task.id}>
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={checkedTasks.includes(task.id)}
+                  onChange={() => handleCheckboxChange(task.id)}
+                />
+                <span className="checkbox-custom"></span>
+              </label>
+              <span className="item-number">{index + 1}.</span> {/* Item number with spacing */}
+              <span className="item-text">{task.text}</span>
+              <button className="delete-btn" onClick={() => handleDelete(task.id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

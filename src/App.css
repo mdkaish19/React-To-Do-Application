@@ -52,6 +52,14 @@ button[type="submit"]:hover {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.task-list-container{
+  max-width: 800px;
+  padding: 40px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 ul {
   list-style-type: none;
   padding: 0;

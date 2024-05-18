@@ -11,6 +11,10 @@ import './App.css'; // Import CSS file
 const ShareButton = () => {
   const tasks = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
+  const checkedTasks = JSON.parse(localStorage.getItem('checkedTasks')) || [];
+
+  const activeTasks = tasks.filter(task => !checkedTasks.includes(task.id));
+  const completedTasks = tasks.filter(task => checkedTasks.includes(task.id));
 
   const generateShareLink = () => {
     const taskList = tasks.map((task, index) => `${index + 1}. ${task.text}`).join('\n');
@@ -25,7 +29,7 @@ const ShareButton = () => {
       const shareLink = generateShareLink();
       window.open(shareLink, '_blank');
     }
-  }
+  };
 
   const generatePDF = () => {
     if (tasks.length === 0) {
@@ -34,9 +38,17 @@ const ShareButton = () => {
       const doc = new jsPDF();
       doc.setFontSize(12);
       doc.text("My To-Do Tasks", 10, 10);
-      tasks.forEach((task, index) => {
-        doc.text(`${index + 1}. ${task.text}`, 10, 20 + (index * 10));
+
+      doc.text("Active Tasks:", 10, 20);
+      activeTasks.forEach((task, index) => {
+        doc.text(`${index + 1}. ${task.text}`, 10, 30 + (index * 10));
       });
+
+      doc.text("Completed Tasks:", 10, 40 + (activeTasks.length * 10));
+      completedTasks.forEach((task, index) => {
+        doc.text(`${index + 1}. ${task.text}`, 10, 50 + (activeTasks.length * 10) + (index * 10));
+      });
+
       doc.save("tasks.pdf");
     }
   };
@@ -46,6 +58,7 @@ const ShareButton = () => {
       alert('There are no tasks to clear...');
     } else if (window.confirm('Are you sure you want to clear all tasks...?')) {
       dispatch(clearTasks());
+      localStorage.removeItem('checkedTasks');
     }
   };
 
