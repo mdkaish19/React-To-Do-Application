@@ -80,7 +80,7 @@ button {
   background-color: #dc3545;
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   margin-right: 5px; /* Add space between buttons */
 }
@@ -95,11 +95,25 @@ button.update-btn {
   background-color: #28a745; 
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
 button.update-btn:hover {
+  background-color: #218838; 
+}
+
+/* Save button */
+button.save-btn {
+  padding: 4px 8px;
+  background-color: #28a745; 
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button.save-btn:hover {
   background-color: #218838; 
 }
 
@@ -109,7 +123,7 @@ button.share-btn {
   background-color: #25D366; 
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
   margin-right: 5px; /* Add space between buttons */
 }
@@ -124,7 +138,7 @@ button.download-btn {
   background-color: #007bff; 
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
 }
 
