@@ -46,7 +46,7 @@ button[type="submit"]:hover {
 /* Update TaskList Component Styles in your CSS file */
 .container {
   max-width: 800px;
-  padding: 20px;
+  padding: 40px;
   background-color: #f8f9fa;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -75,14 +75,14 @@ li {
   word-wrap: break-word; /* Ensure text wraps onto the next line */
 }
 
-button {
+button.delete-btn {
   padding: 4px 8px;
   background-color: #dc3545;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-right: 5px; /* Add space between buttons */
+  margin-left: 5px; /* Add space between buttons */
 }
 
 button:hover {
@@ -147,7 +147,13 @@ button.download-btn:hover {
 }
 
 button.clear-btn {
-  background-color: #dc3545;
+  padding: 8px 16px;
+  background-color: #dc3545; 
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left:  5px; 
 }
 
 button.clear-btn:hover {

@@ -71,7 +71,7 @@ const TaskList = () => {
                 onChange={() => handleCheckboxChange(task.id)}
               />
               <span className="checkbox-custom"></span>
-              <span></span>
+              <span className="item-text"></span>
             </label>
             <span className="item-number">{index + 1}.</span> {/* Item number with spacing */}
             {isEditing === task.id ? (
