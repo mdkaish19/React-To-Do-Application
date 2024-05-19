@@ -1,7 +1,8 @@
-// src/components/TaskInput.js
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../components/TaskAction';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const TaskInput = () => {
   const [task, setTask] = useState('');
@@ -13,20 +14,22 @@ const TaskInput = () => {
       dispatch(addTask(task));
       setTask('');
     } else {
-      alert('Please enter a valid task...'); // Show alert for empty input
+      alert('Please enter a valid task...');
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="task-input-form">
       <input
         type="text"
-        className="task-input" // Added class for styling
+        className="task-input"
         placeholder="Add a new task"
         value={task}
         onChange={(e) => setTask(e.target.value)}
       />
-      <button type="submit">Add Task</button>
+      <button type="submit" className="add-task-btn">
+        <FontAwesomeIcon icon={faPlus} />
+      </button>
     </form>
   );
 };

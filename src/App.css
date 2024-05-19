@@ -125,6 +125,20 @@ button.save-btn:hover {
   background-color: #218838; 
 }
 
+.share-other-btn {
+  background-color: #01afff;
+  padding: 8px 16px; 
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.share-other-btn:hover {
+  background-color: #0381bb;
+}
+
 /* Share button */
 button.share-btn {
   padding: 8px 16px;
@@ -248,3 +262,32 @@ input[type="checkbox"] {
 input[type="checkbox"]:checked + .checkbox-custom::after {
   opacity: 1;
 }
+
+/* Add these styles to your existing App.css */
+
+/* .share-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+} */
+
+/* .share-btn, .share-other-btn, .download-btn, .clear-btn {
+  display: inline-block;
+  background-color: #0059ff;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+} */
+
+/* .share-btn:hover, .share-other-btn:hover, .download-btn:hover, .clear-btn:hover {
+  background-color: #0056b3;
+}
+
+.share-btn .fa, .share-other-btn .fa, .download-btn .fa, .clear-btn .fa {
+  margin-right: 5px;
+} */
