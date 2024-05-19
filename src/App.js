@@ -12,14 +12,27 @@ import './App.css'; // Import CSS file
 const ShareButton = () => {
   const tasks = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
+  const checkedTasks = JSON.parse(localStorage.getItem('checkedTasks')) || [];
+
+  const activeTasks = tasks.filter(task => !checkedTasks.includes(task.id));
+  const completedTasks = tasks.filter(task => checkedTasks.includes(task.id));
 
   const generateShareText = () => {
-    return tasks.map((task, index) => `${index + 1}. ${task.text}`).join('\n');
+    let taskList = "Here are my Tasks List:\n\n";
+    if (activeTasks.length > 0) {
+      taskList += "Active Tasks:\n";
+      taskList += activeTasks.map((task, index) => `${index + 1}. ${task.text}`).join('\n');
+    }
+    if (completedTasks.length > 0) {
+      taskList += "\n\nCompleted Tasks:\n";
+      taskList += completedTasks.map((task, index) => `${index + 1}. ${task.text}`).join('\n');
+    }
+    return taskList;
   };
 
   const generateShareLink = () => {
-    const taskList = generateShareText();
-    const encodedText = encodeURIComponent(`Here are my tasks List:\n${taskList}`);
+    const text = generateShareText();
+    const encodedText = encodeURIComponent(text);
     return `https://wa.me/?text=${encodedText}`;
   };
 
@@ -36,11 +49,11 @@ const ShareButton = () => {
     if (tasks.length === 0) {
       alert('Please add tasks to the list before sharing...');
     } else {
-      const shareText = generateShareText();
+      const text = generateShareText();
       if (navigator.share) {
         navigator.share({
           title: 'My To-Do Tasks',
-          text: `Here are my tasks List:\n${shareText}`
+          text: text
         }).catch((error) => console.log('Error sharing', error));
       } else {
         alert('Web Share API is not supported in your browser...');
@@ -54,10 +67,24 @@ const ShareButton = () => {
     } else {
       const doc = new jsPDF();
       doc.setFontSize(12);
-      doc.text("My To-Do Tasks", 10, 10);
-      tasks.forEach((task, index) => {
-        doc.text(`${index + 1}. ${task.text}`, 10, 20 + (index * 10));
-      });
+      doc.text("Here are my Tasks List:", 10, 10);
+      let yOffset = 20;
+      if (activeTasks.length > 0) {
+        doc.text("Active Tasks:", 10, yOffset);
+        yOffset += 10;
+        activeTasks.forEach((task, index) => {
+          doc.text(`${index + 1}. ${task.text}`, 10, yOffset);
+          yOffset += 10;
+        });
+      }
+      if (completedTasks.length > 0) {
+        doc.text("Completed Tasks:", 10, yOffset);
+        yOffset += 10;
+        completedTasks.forEach((task, index) => {
+          doc.text(`${index + 1}. ${task.text}`, 10, yOffset);
+          yOffset += 10;
+        });
+      }
       doc.save("tasks.pdf");
     }
   };
